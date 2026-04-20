@@ -1,22 +1,123 @@
 #include <iostream>
+#include <cstdlib> //rand()
+#include <chrono>
 using namespace std;
 
+void criar_lista_ordenada (int n, int ordenada[])
+{
+    for (int i = 0; i < n; i++)
+    {
+        ordenada[i] = i;
+    }
+}
+
+void criar_lista_aleatoria (int n, int aleatoria[])
+{
+    for (int i = 0; i < n; i++)
+    {
+        aleatoria[i] = rand() % 100;
+    }
+}
+
+
+//função da busca sequencial
+int linear_search (int array[], int tamanho, int chave)
+{
+    //implementação da busca sequencial
+    for (int i = 0; i < tamanho; i++)
+    {
+        //compara cada elemento do array com a chave
+        if (array[i] == chave)
+        {
+            //se a chave foi encontrada, retorna o índice onde ela está
+            return i;
+        }
+    }
+
+    //se a chave NÂO foi encontrada retorna -1
+    return -1;
+}
+
+
+//função de busca binária
+int binary_search (int array[], int inicio, int fim, int chave)
+{
+    //implementação da busca binária
+
+    //condição de parada: se a chave NÂO foi encontrada retorna -1
+    if (inicio > fim)
+    {
+        return -1;
+    }
+
+    //índice central
+    int meio = (inicio + fim) / 2;
+
+
+    //compara o elemento que está no índice central com a chave, se a chave foi encontrada, retorna o índice onde ela está
+    if (array[meio] == chave)
+    {
+        return meio;
+    }
+
+    //se a chave for maior que o elemento central, procura a chave na metade direita do array
+    else if (array[meio] < chave)
+    {
+        return binary_search(array, meio + 1, fim, chave);
+    }
+    //se a chave for menor que o elemento central, procura a chave na metade esquerda do array
+    else
+    {
+        return binary_search(array, inicio, meio - 1, chave);
+    }
+}
+
+
+//função do bubble sort
+void bubble_sort (int array[], int tamanho)
+{
+    //implementação do bubble sort
+    int temp;
+    for (int i = 0; i < tamanho; i++)
+    {
+        for (int j = 0; j < tamanho - i - 1; j++)
+        {
+            if (array[j] > array[j+1])
+            {
+                temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+}
+
+
+//função de intercalação de dois arrays
 void merge (int array[], int inicio, int meio, int fim)
 {
+    //tamanho
     int n = fim - inicio + 1;
+    //índice do inicio da metade esquerda
     int i = inicio;
+    //índice do início da metade direita
     int j = meio + 1;
+    //índice do array temporário
     int k = 0;
 
+    //array temporário que armazena os elementos da intercalação
     int temp[n];
 
+    //percorre as duas metades enquanto ambas tiverem elementos
     while (i <= meio && j <= fim)
     {
+        //se o elemento da esquerda for menor ou igual, copia ele para o array temporário temp
         if (array[i] <= array[j])
         {
             temp[k] = array[i];
             i++, k++;
         }
+        //se o elemento da direita for menor, copia ele para o vetor temporário temp
         else
         {
             temp[k] = array[j];
@@ -25,6 +126,7 @@ void merge (int array[], int inicio, int meio, int fim)
         }
     }
 
+    //copia os elementos restantes da metade esquerda
     while (i <= meio)
     {
         temp[k] = array[i];
@@ -32,6 +134,7 @@ void merge (int array[], int inicio, int meio, int fim)
         k++;
     }
 
+    //copia os elementos restantes da metade direita
     while (j <= fim)
     {
         temp[k] = array[j];
@@ -39,65 +142,72 @@ void merge (int array[], int inicio, int meio, int fim)
         k++;
     }
 
+    //copia o array temporário de volta para o array original
     for (int m = 0; m < k; m++)
     {
         array[inicio + m] = temp[m];
     }
 }
 
+//função de ordenação por intercalação
 void merge_sort (int array[], int inicio, int fim)
 {
+    //condição de parada: vetor com um único elemento já está ordenado
     if (inicio < fim)
     {
+        //índice central
         int meio = (inicio + fim) / 2;
+        //ordena a metade esquerda
         merge_sort(array, inicio, meio);
+        //ordena a metade direita
         merge_sort(array, meio + 1, fim);
+        //intercala as duas metades ordenadas
         merge(array, inicio, meio, fim);
     }
 }
 
-int binary_search (int array[], int inicio, int fim, int chave)
-{
-    if (inicio > fim)
-    {
-        return -1;
-    }
 
-    int meio = (inicio + fim) / 2;
-
-    if (array[meio] == chave)
-    {
-        return meio;
-    }
-
-    else if (array[meio] < chave)
-    {
-        return binary_search(array, meio + 1, fim, chave);
-    }
-    else
-    {
-        return binary_search(array, inicio, meio - 1, chave);
-    }
-}
 
 int main ()
 {
-/*
     int tamanho;
+    cout << "Qual o tamanho do vetor? (> 0): ";
     cin >> tamanho;
 
-    int lista[tamanho];
-
-    for (int i = 0; i < tamanho; i++)
+    while (tamanho <= 0)
     {
-        cin >> lista[i];
+        cout << "Digite um valor válido (> 0): ";
+        cin >> tamanho;
     }
 
-    int chave;
-    cin >> chave;
+    int tipo;
+    cout << "\nQual algorítimo você deseja testar?\n\n";
+    cout << "1 - Binary search\n";
+    cout << "2 - Merge sort\n";
+    cin >> tipo;
 
-    int indice = binary_search (lista, 0, tamanho -1, chave);
-*/
+    while (tipo < 1 || tipo > 2)
+    {
+        cout << "Digite um valor válido (1 <= tipo <= 2): ";
+        cin >> tipo;
+    }
+
+    int vetor[tamanho];
+
+    if (tipo == 1)
+    {
+        int chave = rand() % 100;
+        criar_lista_ordenada(tamanho, vetor);
+        binary_search(vetor, 0, tamanho - 1, chave);
+    }
+    else
+    {
+        criar_lista_aleatoria(tamanho, vetor);
+        merge_sort(vetor, 0, tamanho - 1);
+    }
+
+
+
 
     int n = 8;
     int lista[8] = {1,3,6,4,1,9,2,7};
