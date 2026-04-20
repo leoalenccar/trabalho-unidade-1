@@ -2,22 +2,7 @@
 #include <cstdlib> //rand()
 #include <chrono>
 using namespace std;
-
-void criar_lista_ordenada (int n, int ordenada[])
-{
-    for (int i = 0; i < n; i++)
-    {
-        ordenada[i] = i;
-    }
-}
-
-void criar_lista_aleatoria (int n, int aleatoria[])
-{
-    for (int i = 0; i < n; i++)
-    {
-        aleatoria[i] = rand() % 100;
-    }
-}
+using namespace std::chrono;
 
 
 //função da busca sequencial
@@ -167,64 +152,112 @@ void merge_sort (int array[], int inicio, int fim)
 }
 
 
+void criar_lista_ordenada (int n, int ordenada[])
+{
+    for (int i = 0; i < n; i++)
+    {
+        ordenada[i] = i;
+    }
+}
+
+void criar_lista_aleatoria (int n, int aleatoria[])
+{
+    for (int i = 0; i < n; i++)
+    {
+        aleatoria[i] = rand() % 100;
+    }
+}
+
+
 
 int main ()
 {
+/*
     int tamanho;
     cout << "Qual o tamanho do vetor? (> 0): ";
     cin >> tamanho;
 
     while (tamanho <= 0)
     {
-        cout << "Digite um valor válido (> 0): ";
+        cout << "\nDigite um valor válido (> 0): ";
         cin >> tamanho;
     }
 
     int tipo;
     cout << "\nQual algorítimo você deseja testar?\n\n";
-    cout << "1 - Binary search\n";
-    cout << "2 - Merge sort\n";
+    cout << "1 - Linear search\n";
+    cout << "2 - Binary search\n";
+    cout << "3 - Bubble sort\n";
+    cout << "4 - Merge sort\n";
     cin >> tipo;
 
-    while (tipo < 1 || tipo > 2)
+    while (tipo < 1 || tipo > 4)
     {
-        cout << "Digite um valor válido (1 <= tipo <= 2): ";
+        cout << "\nDigite um valor válido (1 <= tipo <= 4): ";
         cin >> tipo;
     }
 
     int vetor[tamanho];
 
-    if (tipo == 1)
+    if (tipo < 3)
     {
         int chave = rand() % 100;
         criar_lista_ordenada(tamanho, vetor);
-        binary_search(vetor, 0, tamanho - 1, chave);
+        switch (tipo)
+        {
+            case 1:
+                linear_search(vetor, tamanho, chave);
+                break;
+            case 2:
+                binary_search(vetor, 0, tamanho - 1, chave);
+                break
+        }
     }
     else
     {
         criar_lista_aleatoria(tamanho, vetor);
-        merge_sort(vetor, 0, tamanho - 1);
+        switch (tipo)
+        {
+            case 3:
+                bubble_sort(vetor, tamanho);
+                break;
+            case 4:
+                merge_sort(vetor, 0, tamanho - 1);
+                break;
+        }
     }
+*/
 
 
 
+    int n = 100;
+    int lista[n];
 
-    int n = 8;
-    int lista[8] = {1,3,6,4,1,9,2,7};
+    criar_lista_aleatoria(n, lista);
 
-    for (int i = 0; i < 8; i++)
+    cout << "Lista original: ";
+    for (int i = 0; i < n; i++)
     {
         cout << lista[i] << " ";
     }
     cout << endl;
 
-    merge_sort(lista, 0, 8 - 1);
+    auto inicioSeq = high_resolution_clock::now();
+    /*
+    merge_sort(lista, 0, n - 1);
+    */
+   bubble_sort(lista, n);
+    auto fimSeq = high_resolution_clock::now();
+    auto duracaoSeq = duration_cast<microseconds> (fimSeq - inicioSeq).count();
 
-    for (int i = 0; i < 8; i++)
+    cout << "Lista ordenada com merge sort: ";
+    for (int i = 0; i < n; i++)
     {
         cout << lista[i] << " ";
     }
-    cout << endl;
+    cout << endl << endl;
+
+    cout << "Para n = " << n << ", Tempo: " << duracaoSeq << " Microsegundos." << endl;
 
     return 0;
 }
