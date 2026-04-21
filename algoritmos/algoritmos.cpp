@@ -1,8 +1,13 @@
+// ============================================================
+// Arquivo: algoritmos.cpp
+// Descrição: implementação dos algoritmos de busca e ordenação
+// Autor 1: Leonardo Alencar de Aquino
+// Autor 2: Arthur Victor Vieira Almeida
+// Data: abril de 2026
+// Disciplina: Estruturas de Dados Básicas I
+// ============================================================
+
 #include "algoritmos.h"
-#include <string>
-#include <fstream>
-#include <cstdlib> //rand()
-#include <chrono>
 
 // função da busca sequencial
 int linear_search(int array[], int tamanho, int chave)
@@ -146,41 +151,4 @@ void merge_sort(int array[], int inicio, int fim)
         // intercala as duas metades ordenadas
         merge(array, inicio, meio, fim);
     }
-}
-
-// função para criar lista ordenada, 0 à n
-void criar_lista_ordenada(int n, int ordenada[])
-{
-    for (int i = 0; i < n; i++)
-    {
-        ordenada[i] = i;
-    }
-}
-
-// função para criar lista aleatória, números podem ir de 0 à 99
-void criar_lista_aleatoria(int n, int aleatoria[])
-{
-    for (int i = 0; i < n; i++)
-    {
-        aleatoria[i] = rand() % 100;
-    }
-}
-
-// função para salvar arquivo
-void salvar_arquivo(int tamanho, long long duracao_BS, long long duracao_MS, long long duracao_BLPC, long long duracao_BBPC)
-{
-    std::ofstream file("tempos.csv", std::ios::app);
-
-    if (file.tellp() == 0)
-    {
-        file << "n,bubble_sort,merge_sort,linear_search,binary_search\n";
-    }
-
-    file << tamanho << ","
-         << duracao_BS << ","
-         << duracao_MS << ","
-         << duracao_BLPC << ","
-         << duracao_BBPC << std::endl;
-
-    file.close();
 }

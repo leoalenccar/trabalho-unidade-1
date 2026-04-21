@@ -1,4 +1,17 @@
+// ============================================================
+// Arquivo: main.cpp
+// Descrição: programa principal — coleta tempos de execução
+//            dos algoritmos e gera gráficos
+// Autor 1: Leonardo Alencar de Aquino
+// Autor 2: Arthur Victor Vieira Almeida
+// Data: abril de 2026
+// Disciplina: Estruturas de Dados Básicas I
+// ============================================================
+
 #include "../algoritmos/algoritmos.h"
+#include "../funcoes/funcoes.h"
+#include <iostream>
+#include <chrono>
 using namespace std::chrono;
 
 int main()
@@ -12,9 +25,10 @@ int main()
     {
         int tamanho = tamanhos[t];
 
+        // sort
         long long total_BS = 0, total_MS = 0;
-        long long total_BLPC = 0, total_BBPC = 0;
-        long long total_BLMC = 0, total_BBMC = 0;
+        // search
+        long long total_BL = 0, total_BB = 0;
 
         for (int r = 0; r < repeticoes; r++)
         {
@@ -55,33 +69,19 @@ int main()
             int chave_pior_binary = -1;
             int chave_melhor_binary = ordenado_merge[tamanho / 2];
 
-            // BUSCA LINEAR==================================================================================
+            // SEARCH==================================================================================
 
-            // pior caso
-            auto inicio_BLPC = high_resolution_clock::now();
+            // linear search
+            auto inicio_BL = high_resolution_clock::now();
             linear_search(lista_aleatoria, tamanho, chave_pior_linear);
-            auto fim_BLPC = high_resolution_clock::now();
-            total_BLPC += duration_cast<microseconds>(fim_BLPC - inicio_BLPC).count();
+            auto fim_BL = high_resolution_clock::now();
+            total_BL += duration_cast<microseconds>(fim_BL - inicio_BL).count();
 
-            // melhor caso
-            auto inicio_BLMC = high_resolution_clock::now();
-            linear_search(lista_aleatoria, tamanho, chave_melhor_linear);
-            auto fim_BLMC = high_resolution_clock::now();
-            total_BLMC += duration_cast<microseconds>(fim_BLMC - inicio_BLMC).count();
-
-            // BUSCA BINÁRIA=================================================================================
-
-            // pior caso
-            auto inicio_BBPC = high_resolution_clock::now();
+            // binary search
+            auto inicio_BB = high_resolution_clock::now();
             binary_search(ordenado_merge, 0, tamanho - 1, chave_pior_binary);
-            auto fim_BBPC = high_resolution_clock::now();
-            total_BBPC += duration_cast<microseconds>(fim_BBPC - inicio_BBPC).count();
-
-            // melhor caso
-            auto inicio_BBMC = high_resolution_clock::now();
-            binary_search(ordenado_merge, 0, tamanho - 1, chave_melhor_binary);
-            auto fim_BBMC = high_resolution_clock::now();
-            total_BBMC += duration_cast<microseconds>(fim_BBMC - inicio_BBMC).count();
+            auto fim_BB = high_resolution_clock::now();
+            total_BB += duration_cast<microseconds>(fim_BB - inicio_BB).count();
 
             //==============================================================================================
 
@@ -93,24 +93,21 @@ int main()
         // médias
         long long duracao_BS = total_BS / repeticoes;
         long long duracao_MS = total_MS / repeticoes;
-        long long duracao_BLPC = total_BLPC / repeticoes;
-        long long duracao_BBPC = total_BBPC / repeticoes;
-        long long duracao_BLMC = total_BLMC / repeticoes;
-        long long duracao_BBMC = total_BBMC / repeticoes;
+        long long duracao_BL = total_BL / repeticoes;
+        long long duracao_BB = total_BB / repeticoes;
 
-        cout << "\n================ Tempos de execução (média de " << repeticoes << " repetições) ================\n\n";
-        cout << "Algorítmos de ordenação para arrays de tamanho " << tamanho << ":\n";
-        cout << "Bubble sort: " << duracao_BS << " microssegundos.\n";
-        cout << "Merge sort:  " << duracao_MS << " microssegundos.\n\n";
-        cout << "Algorítmos de busca no pior caso:\n";
-        cout << "Linear search: " << duracao_BLPC << " microssegundos.\n";
-        cout << "Binary search: " << duracao_BBPC << " microssegundos.\n\n";
-        cout << "Algorítmos de busca no melhor caso:\n";
-        cout << "Linear search: " << duracao_BLMC << " microssegundos.\n";
-        cout << "Binary search: " << duracao_BBMC << " microssegundos.\n\n";
+        //mostrar no terminal
+        std::cout << "Algorítmos de ordenação:\n";
+        std::cout << "Bubble sort: " << duracao_BS << " microssegundos.\n";
+        std::cout << "Merge sort:  " << duracao_MS << " microssegundos.\n\n";
+        std::cout << "Algorítmos de busca:\n";
+        std::cout << "Linear search: " << duracao_BL << " microssegundos.\n";
+        std::cout << "Binary search: " << duracao_BB << " microssegundos.\n\n";
 
-        salvar_arquivo(tamanho, duracao_BS, duracao_MS, duracao_BLPC, duracao_BBPC);
+        salvar_arquivo(tamanho, duracao_BS, duracao_MS, duracao_BL, duracao_BB);
     }
+
+    gerar_graficos();
 
     return 0;
 }
