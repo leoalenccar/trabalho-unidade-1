@@ -90,7 +90,7 @@ void merge (int array[], int inicio, int meio, int fim)
     int k = 0;
 
     //array temporário que armazena os elementos da intercalação
-    int temp[n];
+    int *temp = new int[n];
 
     //percorre as duas metades enquanto ambas tiverem elementos
     while (i <= meio && j <= fim)
@@ -131,6 +131,8 @@ void merge (int array[], int inicio, int meio, int fim)
     {
         array[inicio + m] = temp[m];
     }
+
+    delete[] temp;
 }
 
 //função de ordenação por intercalação
