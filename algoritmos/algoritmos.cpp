@@ -1,9 +1,8 @@
-#include <iostream>
+#include "algoritmos.h"
 #include <string>
 #include <fstream>
 #include <cstdlib> //rand()
 #include <chrono>
-using namespace std;
 
 // função da busca sequencial
 int linear_search(int array[], int tamanho, int chave)
@@ -168,23 +167,20 @@ void criar_lista_aleatoria(int n, int aleatoria[])
 }
 
 // função para salvar arquivo
-void salvar_arquivo(int tamanho, long long duracaoBS, long long duracaoMS, long long duracao_BLPC, long long duracao_BBPC, long long duracao_BLMC, long long duracao_BBMC)
+void salvar_arquivo(int tamanho, long long duracao_BS, long long duracao_MS, long long duracao_BLPC, long long duracao_BBPC)
 {
-    std::ofstream file("dados.txt", std::ios::app);
+    std::ofstream file("tempos.csv", std::ios::app);
 
-    file << "Tamanho do array: " << tamanho << endl;
-    file << "Algorítmos de ordenação:" << ":" << endl;
-    file << "Bubble sort: " << duracaoBS << " microssegundos." << endl;
-    file << "Merge sort:  " << duracaoMS << " microssegundos." << endl
-         << endl;
-    file << "Algorítmos de busca no pior caso:" << endl;
-    file << "Linear search: " << duracao_BLPC << " microssegundos." << endl;
-    file << "Binary search: " << duracao_BBPC << " microssegundos." << endl
-         << endl;
-    file << "Algorítmos de busca no melhor caso:" << endl;
-    file << "Linear search: " << duracao_BLMC << " microssegundos." << endl;
-    file << "Binary search: " << duracao_BBMC << " microssegundos." << endl
-         << endl;
+    if (file.tellp() == 0)
+    {
+        file << "n,bubble_sort,merge_sort,linear_search,binary_search\n";
+    }
+
+    file << tamanho << ","
+         << duracao_BS << ","
+         << duracao_MS << ","
+         << duracao_BLPC << ","
+         << duracao_BBPC << std::endl;
 
     file.close();
 }

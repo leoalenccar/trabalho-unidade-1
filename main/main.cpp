@@ -1,4 +1,4 @@
-#include "algoritmos.h"
+#include "../algoritmos/algoritmos.h"
 using namespace std::chrono;
 
 int main()
@@ -12,7 +12,7 @@ int main()
     {
         int tamanho = tamanhos[t];
 
-        long long totalBS = 0, totalMS = 0;
+        long long total_BS = 0, total_MS = 0;
         long long total_BLPC = 0, total_BBPC = 0;
         long long total_BLMC = 0, total_BBMC = 0;
 
@@ -34,16 +34,16 @@ int main()
             // SORT===========================================================================================
 
             // bubble sort
-            auto inicioBS = high_resolution_clock::now();
+            auto inicio_BS = high_resolution_clock::now();
             bubble_sort(ordenado_bubble, tamanho);
-            auto fimBS = high_resolution_clock::now();
-            totalBS += duration_cast<microseconds>(fimBS - inicioBS).count();
+            auto fim_BS = high_resolution_clock::now();
+            total_BS += duration_cast<microseconds>(fim_BS - inicio_BS).count();
 
             // merge sort
-            auto inicioMS = high_resolution_clock::now();
+            auto inicio_MS = high_resolution_clock::now();
             merge_sort(ordenado_merge, 0, tamanho - 1);
-            auto fimMS = high_resolution_clock::now();
-            totalMS += duration_cast<microseconds>(fimMS - inicioMS).count();
+            auto fim_MS = high_resolution_clock::now();
+            total_MS += duration_cast<microseconds>(fim_MS - inicio_MS).count();
 
             // chaves de busca
             // pior caso linear:  chave não encontrada (-1), percorre tudo
@@ -91,8 +91,8 @@ int main()
         }
 
         // médias
-        long long duracaoBS = totalBS / repeticoes;
-        long long duracaoMS = totalMS / repeticoes;
+        long long duracao_BS = total_BS / repeticoes;
+        long long duracao_MS = total_MS / repeticoes;
         long long duracao_BLPC = total_BLPC / repeticoes;
         long long duracao_BBPC = total_BBPC / repeticoes;
         long long duracao_BLMC = total_BLMC / repeticoes;
@@ -100,8 +100,8 @@ int main()
 
         cout << "\n================ Tempos de execução (média de " << repeticoes << " repetições) ================\n\n";
         cout << "Algorítmos de ordenação para arrays de tamanho " << tamanho << ":\n";
-        cout << "Bubble sort: " << duracaoBS << " microssegundos.\n";
-        cout << "Merge sort:  " << duracaoMS << " microssegundos.\n\n";
+        cout << "Bubble sort: " << duracao_BS << " microssegundos.\n";
+        cout << "Merge sort:  " << duracao_MS << " microssegundos.\n\n";
         cout << "Algorítmos de busca no pior caso:\n";
         cout << "Linear search: " << duracao_BLPC << " microssegundos.\n";
         cout << "Binary search: " << duracao_BBPC << " microssegundos.\n\n";
@@ -109,7 +109,7 @@ int main()
         cout << "Linear search: " << duracao_BLMC << " microssegundos.\n";
         cout << "Binary search: " << duracao_BBMC << " microssegundos.\n\n";
 
-        salvar_arquivo(tamanho, duracaoBS, duracaoMS, duracao_BLPC, duracao_BBPC, duracao_BLMC, duracao_BBMC);
+        salvar_arquivo(tamanho, duracao_BS, duracao_MS, duracao_BLPC, duracao_BBPC);
     }
 
     return 0;
