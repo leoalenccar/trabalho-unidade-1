@@ -1,39 +1,33 @@
-=======================================================================
-
-Tamanho do array: 100
-Algorítmos de ordenação::
-Bubble sort: 52 microssegundos.
-Merge sort:  55 microssegundos.
-
-Algorítmos de busca no pior caso:
-Linear search: 0 microssegundos.
-Binary search: 0 microssegundos.
-
-Algorítmos de busca no melhor caso:
-Linear search: 0 microssegundos.
-Binary search: 0 microssegundos.
-
-=======================================================================
-
 Tamanho do array: 1000
 Algorítmos de ordenação::
-Bubble sort: 4948 microssegundos.
-Merge sort:  430 microssegundos.
+Bubble sort: 4365 microssegundos.
+Merge sort:  297 microssegundos.
 
 Algorítmos de busca no pior caso:
-Linear search: 2 microssegundos.
+Linear search: 3 microssegundos.
 Binary search: 0 microssegundos.
 
 Algorítmos de busca no melhor caso:
 Linear search: 0 microssegundos.
 Binary search: 0 microssegundos.
 
-=======================================================================
+Tamanho do array: 5000
+Algorítmos de ordenação::
+Bubble sort: 49183 microssegundos.
+Merge sort:  811 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 8 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
 
 Tamanho do array: 10000
 Algorítmos de ordenação::
-Bubble sort: 221537 microssegundos.
-Merge sort:  1800 microssegundos.
+Bubble sort: 197297 microssegundos.
+Merge sort:  1759 microssegundos.
 
 Algorítmos de busca no pior caso:
 Linear search: 11 microssegundos.
@@ -43,20 +37,29 @@ Algorítmos de busca no melhor caso:
 Linear search: 0 microssegundos.
 Binary search: 0 microssegundos.
 
-=======================================================================
-
-Tamanho do array: 100000
+Tamanho do array: 50000
 Algorítmos de ordenação::
-Bubble sort: 35422768 microssegundos.
-Merge sort:  19229 microssegundos.
+Bubble sort: 8289965 microssegundos.
+Merge sort:  8825 microssegundos.
 
 Algorítmos de busca no pior caso:
-Linear search: 151 microssegundos.
+Linear search: 58 microssegundos.
 Binary search: 0 microssegundos.
 
 Algorítmos de busca no melhor caso:
 Linear search: 0 microssegundos.
 Binary search: 0 microssegundos.
 
-=======================================================================
+Tamanho do array: 100000
+Algorítmos de ordenação::
+Bubble sort: 31175454 microssegundos.
+Merge sort:  15931 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 99 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
 

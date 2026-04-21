@@ -154,7 +154,7 @@ void merge_sort (int array[], int inicio, int fim)
     }
 }
 
-
+//função para criar lista ordenada, 0 à n
 void criar_lista_ordenada (int n, int ordenada[])
 {
     for (int i = 0; i < n; i++)
@@ -163,6 +163,7 @@ void criar_lista_ordenada (int n, int ordenada[])
     }
 }
 
+//função para criar lista aleatória, números podem ir de 0 à 99
 void criar_lista_aleatoria (int n, int aleatoria[])
 {
     for (int i = 0; i < n; i++)
@@ -171,6 +172,7 @@ void criar_lista_aleatoria (int n, int aleatoria[])
     }
 }
 
+//função para salvar arquivo
 void salvar_arquivo(int tamanho, long long duracaoBS, long long duracaoMS, long long duracao_BLPC, long long duracao_BBPC, long long duracao_BLMC, long long duracao_BBMC)
 {
     std::ofstream file("dados.txt", std::ios::app);
@@ -185,7 +187,6 @@ void salvar_arquivo(int tamanho, long long duracaoBS, long long duracaoMS, long 
     file << "Algorítmos de busca no melhor caso:" << endl;
     file << "Linear search: " << duracao_BLMC << " microssegundos." << endl;
     file << "Binary search: " << duracao_BBMC << " microssegundos." << endl << endl;
-    file << "=======================================================================" << endl << endl;
 
     file.close();
 }
