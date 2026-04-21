@@ -98,12 +98,14 @@ int main ()
     cout << "Algorítmos de ordenação para arrays de tamanho " << tamanho << ":\n";
     cout << "Bubble sort: " << duracaoBS << " microssegundos.\n";
     cout << "Merge sort:  " << duracaoMS << " microssegundos.\n\n";
-    cout << "Algorítmos de busca para arrays de tamanho " << tamanho << " no pior caso:\n";
+    cout << "Algorítmos de busca no pior caso:\n";
     cout << "Linear search: " << duracao_BLPC << " microssegundos.\n";
     cout << "Binary search: " << duracao_BBPC << " microssegundos.\n\n";
-    cout << "Algorítmos de busca para arrays de tamanho " << tamanho << " no melhor caso:\n";
+    cout << "Algorítmos de busca no melhor caso:\n";
     cout << "Linear search: " << duracao_BLMC << " microssegundos.\n";
     cout << "Binary search: " << duracao_BBMC << " microssegundos.\n\n";
+
+    salvar_arquivo(tamanho, duracaoBS, duracaoMS, duracao_BLPC, duracao_BBPC, duracao_BLMC, duracao_BBMC);
 
 
     delete[] lista_aleatorio;

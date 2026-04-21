@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 #include <cstdlib> //rand()
 #include <chrono>
 using namespace std;
@@ -167,4 +169,23 @@ void criar_lista_aleatoria (int n, int aleatoria[])
     {
         aleatoria[i] = rand() % 100;
     }
+}
+
+void salvar_arquivo(int tamanho, long long duracaoBS, long long duracaoMS, long long duracao_BLPC, long long duracao_BBPC, long long duracao_BLMC, long long duracao_BBMC)
+{
+    std::ofstream file("dados.txt", std::ios::app);
+
+    file << "Tamanho do array: " << tamanho << endl;
+    file << "Algorítmos de ordenação:"<< ":" << endl;
+    file << "Bubble sort: " << duracaoBS << " microssegundos." << endl;
+    file << "Merge sort:  " << duracaoMS << " microssegundos." << endl << endl;
+    file << "Algorítmos de busca no pior caso:" << endl;
+    file << "Linear search: " << duracao_BLPC << " microssegundos." << endl;
+    file << "Binary search: " << duracao_BBPC << " microssegundos." << endl << endl;
+    file << "Algorítmos de busca no melhor caso:" << endl;
+    file << "Linear search: " << duracao_BLMC << " microssegundos." << endl;
+    file << "Binary search: " << duracao_BBMC << " microssegundos." << endl << endl;
+    file << "=======================================================================" << endl << endl;
+
+    file.close();
 }

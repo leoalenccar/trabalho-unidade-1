@@ -1,0 +1,62 @@
+=======================================================================
+
+Tamanho do array: 100
+Algorítmos de ordenação::
+Bubble sort: 52 microssegundos.
+Merge sort:  55 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
+
+=======================================================================
+
+Tamanho do array: 1000
+Algorítmos de ordenação::
+Bubble sort: 4948 microssegundos.
+Merge sort:  430 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 2 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
+
+=======================================================================
+
+Tamanho do array: 10000
+Algorítmos de ordenação::
+Bubble sort: 221537 microssegundos.
+Merge sort:  1800 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 11 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
+
+=======================================================================
+
+Tamanho do array: 100000
+Algorítmos de ordenação::
+Bubble sort: 35422768 microssegundos.
+Merge sort:  19229 microssegundos.
+
+Algorítmos de busca no pior caso:
+Linear search: 151 microssegundos.
+Binary search: 0 microssegundos.
+
+Algorítmos de busca no melhor caso:
+Linear search: 0 microssegundos.
+Binary search: 0 microssegundos.
+
+=======================================================================
+
