@@ -23,7 +23,7 @@ int linear_search(int array[], int tamanho, int chave)
         }
     }
 
-    // se a chave NÂO foi encontrada retorna -1
+    // se a chave NÃO foi encontrada retorna -1
     return -1;
 }
 
@@ -32,7 +32,7 @@ int binary_search(int array[], int inicio, int fim, int chave)
 {
     // implementação da busca binária
 
-    // condição de parada: se a chave NÂO foi encontrada retorna -1
+    // condição de parada: se a chave NÃO foi encontrada retorna -1
     if (inicio > fim)
     {
         return -1;
@@ -100,7 +100,8 @@ void merge(int array[], int inicio, int meio, int fim)
         if (array[i] <= array[j])
         {
             temp[k] = array[i];
-            i++, k++;
+            i++;
+            k++;
         }
         // se o elemento da direita for menor, copia ele para o vetor temporário temp
         else
@@ -133,6 +134,7 @@ void merge(int array[], int inicio, int meio, int fim)
         array[inicio + m] = temp[m];
     }
 
+    // deletando o array temp
     delete[] temp;
 }
 
