@@ -96,7 +96,7 @@ int main()
         long long duracao_BL = total_BL / repeticoes;
         long long duracao_BB = total_BB / repeticoes;
 
-        //mostrar no terminal
+        // mostrar no terminal
         std::cout << "Algorítmos de ordenação:\n";
         std::cout << "Bubble sort: " << duracao_BS << " microssegundos.\n";
         std::cout << "Merge sort:  " << duracao_MS << " microssegundos.\n\n";
