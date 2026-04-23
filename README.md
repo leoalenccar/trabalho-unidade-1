@@ -38,8 +38,8 @@ O programa mede e compara empiricamente o tempo de execução de algoritmos de b
 
 ## Como compilar
 
-cd main
-g++ main.cpp ../algoritmos/algoritmos.cpp ../funcoes/funcoes.cpp -o programa
+- cd main
+- g++ main.cpp ../algoritmos/algoritmos.cpp ../funcoes/funcoes.cpp -o programa
 
 ## Como executar
 
