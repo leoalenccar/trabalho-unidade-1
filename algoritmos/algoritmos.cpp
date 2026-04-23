@@ -9,7 +9,9 @@
 
 #include "algoritmos.h"
 
-// função da busca sequencial
+// busca linear (complexidade O(n))
+// percorre o vetor do início ao fim até encontrar a chave
+// não exige que o vetor esteja ordenado
 int linear_search(int array[], int tamanho, int chave)
 {
     // implementação da busca sequencial
@@ -27,7 +29,9 @@ int linear_search(int array[], int tamanho, int chave)
     return -1;
 }
 
-// função de busca binária
+// busca binária (complexidade O(log n))
+// funciona apenas em vetores ordenados
+// divide o espaço de busca pela metade a cada chamada
 int binary_search(int array[], int inicio, int fim, int chave)
 {
     // implementação da busca binária
@@ -38,7 +42,7 @@ int binary_search(int array[], int inicio, int fim, int chave)
         return -1;
     }
 
-    // índice central
+    // calcula o índice central para dividir o vetor em duas partes
     int meio = (inicio + fim) / 2;
 
     // compara o elemento que está no índice central com a chave, se a chave foi encontrada, retorna o índice onde ela está
@@ -138,7 +142,9 @@ void merge(int array[], int inicio, int meio, int fim)
     delete[] temp;
 }
 
-// função de ordenação por intercalação
+// merge sort (complexidade O(n log n))
+// algoritmo baseado em divisão e conquista
+// divide o vetor recursivamente e depois intercala as partes ordenadas
 void merge_sort(int array[], int inicio, int fim)
 {
     // condição de parada: vetor com um único elemento já está ordenado
