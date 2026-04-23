@@ -12,10 +12,24 @@
 #include "../funcoes/funcoes.h"
 #include <iostream>
 #include <chrono>
+#include <fstream>
 using namespace std::chrono;
 
+
+// processos:
+// 1. para cada tamanho de entrada
+// 2. gera listas aleatórias
+// 3. executa algoritmos várias vezes
+// 4. calcula média dos tempos
+// 5. salva dados e gera gráficos
 int main()
 {
+    // escreve o cabeçalho do arquivo onde
+    // serão salvos os tempos
+    std::ofstream file("tempos.csv");
+    file << "n,bubble_sort,merge_sort,linear_search,binary_search\n";
+    file.close();
+
     // tamanhos para análise
     int tamanhos[] = {1000, 5000, 10000, 50000, 100000};
     int num_tamanhos = 5;
@@ -36,7 +50,8 @@ int main()
             int *lista_aleatoria = new int[tamanho];
             criar_lista_aleatoria(tamanho, lista_aleatoria);
 
-            // cópias
+            // cria cópias da lista original para garantir que cada algoritmo
+            // ordene exatamente os mesmos dados
             int *ordenado_bubble = new int[tamanho];
             int *ordenado_merge = new int[tamanho];
             for (int i = 0; i < tamanho; i++)
@@ -45,6 +60,7 @@ int main()
                 ordenado_merge[i] = lista_aleatoria[i];
             }
 
+            // medir tempos com a biblioteca chrono
             // SORT===========================================================================================
 
             // bubble sort
@@ -61,13 +77,9 @@ int main()
 
             // chaves de busca
             // pior caso linear:  chave não encontrada (-1), percorre tudo
-            // melhor caso linear: primeiro elemento
             // pior caso binária:  chave não encontrada (-1), percorre tudo
-            // melhor caso binária: elemento do meio
             int chave_pior_linear = -1;
-            int chave_melhor_linear = lista_aleatoria[0];
             int chave_pior_binary = -1;
-            int chave_melhor_binary = ordenado_merge[tamanho / 2];
 
             // SEARCH==================================================================================
 
@@ -96,7 +108,7 @@ int main()
         long long duracao_BL = total_BL / repeticoes;
         long long duracao_BB = total_BB / repeticoes;
 
-        //mostrar no terminal
+        // mostrar no terminal
         std::cout << "Algorítmos de ordenação:\n";
         std::cout << "Bubble sort: " << duracao_BS << " microssegundos.\n";
         std::cout << "Merge sort:  " << duracao_MS << " microssegundos.\n\n";

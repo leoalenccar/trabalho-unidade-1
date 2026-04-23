@@ -12,7 +12,8 @@
 #include <iostream>
 #include <fstream>
 
-// função para criar lista aleatória, números podem ir de 0 à 99
+// gera um vetor de tamanho n com valores aleatórios (0 a 99)
+// usado como entrada para os testes de desempenho dos algoritmos
 void criar_lista_aleatoria(int n, int aleatoria[])
 {
     for (int i = 0; i < n; i++)
@@ -21,15 +22,12 @@ void criar_lista_aleatoria(int n, int aleatoria[])
     }
 }
 
-// função para salvar arquivo
+// salva os tempos médios no arquivo "tempos.csv"
+// cada linha representa um tamanho de entrada (n)
+// os dados serão usados posteriormente para gerar os gráficos
 void salvar_arquivo(int tamanho, long long duracao_BS, long long duracao_MS, long long duracao_BL, long long duracao_BB)
 {
     std::ofstream file("tempos.csv", std::ios::app);
-
-    if (file.tellp() == 0)
-    {
-        file << "n,bubble_sort,merge_sort,linear_search,binary_search\n";
-    }
 
     file << tamanho << ","
          << duracao_BS << ","
@@ -40,10 +38,10 @@ void salvar_arquivo(int tamanho, long long duracao_BS, long long duracao_MS, lon
     file.close();
 }
 
-// função para gerar gráficos
+/// executa um script do gnuplot (graficos.gp) para gerar os gráficos
+// a partir do arquivo tempos.csv
 void gerar_graficos()
 {
-    // usa gnuplot
     system("gnuplot graficos.gp");
     std::cout << "Graficos gerados!" << std::endl;
 }

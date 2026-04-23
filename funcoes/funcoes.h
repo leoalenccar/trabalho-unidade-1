@@ -14,7 +14,7 @@
 void criar_lista_aleatoria(int n, int aleatoria[]);
 
 // função para salvar arquivo
-void salvar_arquivo (int tamanho, long long duracao_BS, long long duracao_MS, long long duracao_BL, long long duracao_BB);
+void salvar_arquivo(int tamanho, long long duracao_BS, long long duracao_MS, long long duracao_BL, long long duracao_BB);
 
 // função para gerar gráficos
 void gerar_graficos();

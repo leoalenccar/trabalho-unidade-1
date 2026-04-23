@@ -9,7 +9,9 @@
 
 #include "algoritmos.h"
 
-// função da busca sequencial
+// busca linear (complexidade O(n))
+// percorre o vetor do início ao fim até encontrar a chave
+// não exige que o vetor esteja ordenado
 int linear_search(int array[], int tamanho, int chave)
 {
     // implementação da busca sequencial
@@ -23,22 +25,24 @@ int linear_search(int array[], int tamanho, int chave)
         }
     }
 
-    // se a chave NÂO foi encontrada retorna -1
+    // se a chave NÃO foi encontrada retorna -1
     return -1;
 }
 
-// função de busca binária
+// busca binária (complexidade O(log n))
+// funciona apenas em vetores ordenados
+// divide o espaço de busca pela metade a cada chamada
 int binary_search(int array[], int inicio, int fim, int chave)
 {
     // implementação da busca binária
 
-    // condição de parada: se a chave NÂO foi encontrada retorna -1
+    // condição de parada: se a chave NÃO foi encontrada retorna -1
     if (inicio > fim)
     {
         return -1;
     }
 
-    // índice central
+    // calcula o índice central para dividir o vetor em duas partes
     int meio = (inicio + fim) / 2;
 
     // compara o elemento que está no índice central com a chave, se a chave foi encontrada, retorna o índice onde ela está
@@ -100,7 +104,8 @@ void merge(int array[], int inicio, int meio, int fim)
         if (array[i] <= array[j])
         {
             temp[k] = array[i];
-            i++, k++;
+            i++;
+            k++;
         }
         // se o elemento da direita for menor, copia ele para o vetor temporário temp
         else
@@ -133,10 +138,13 @@ void merge(int array[], int inicio, int meio, int fim)
         array[inicio + m] = temp[m];
     }
 
+    // deletando o array temp
     delete[] temp;
 }
 
-// função de ordenação por intercalação
+// merge sort (complexidade O(n log n))
+// algoritmo baseado em divisão e conquista
+// divide o vetor recursivamente e depois intercala as partes ordenadas
 void merge_sort(int array[], int inicio, int fim)
 {
     // condição de parada: vetor com um único elemento já está ordenado
