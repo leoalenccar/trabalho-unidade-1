@@ -5,10 +5,10 @@ O programa mede e compara empiricamente o tempo de execução de algoritmos de b
 
 ## Algoritmos analisados
 
-- Bubble Sort — O(n²)
-- Merge Sort — O(n log n)
-- Linear Search — O(n)
-- Binary Search — O(log n)
+- Bubble Sort - O(n²)
+- Merge Sort - O(n log n)
+- Linear Search - O(n)
+- Binary Search - O(log n)
 
 ## Estrutura do projeto
 
@@ -53,7 +53,7 @@ O programa irá:
 
 ## Saída
 
-- `tempos.csv` — tempos de execução de cada algoritmo
+- `tempos.csv` - tempos de execução de cada algoritmo
 - `grafico_bubble_sort.png`
 - `grafico_merge_sort.png`
 - `grafico_linear_search.png`
