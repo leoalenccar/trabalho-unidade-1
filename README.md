@@ -44,17 +44,3 @@ O programa mede e compara empiricamente o tempo de execução de algoritmos de b
 ## Como executar
 
 - ./programa
-
-O programa irá:
-1. Executar cada algoritmo para entradas de tamanho 1.000, 5.000, 10.000, 50.000 e 100.000
-2. Calcular a média de 10 execuções para cada tamanho
-3. Salvar os resultados em `tempos.csv`
-4. Gerar os gráficos automaticamente com gnuplot
-
-## Saída
-
-- `tempos.csv` - tempos de execução de cada algoritmo
-- `grafico_bubble_sort.png`
-- `grafico_merge_sort.png`
-- `grafico_linear_search.png`
-- `grafico_binary_search.png`
